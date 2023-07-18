@@ -1,0 +1,154 @@
+package org.Study;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Button;
+import java.awt.Color;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.sql.*;
+public class DeltDoc extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DeltDoc frame = new DeltDoc();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public DeltDoc() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 888, 553);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		textField = new JTextField();
+		textField.setBounds(216, 39, 278, 27);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(216, 95, 278, 27);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(216, 148, 278, 27);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(216, 202, 278, 27);
+		contentPane.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("NAME");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(76, 50, 45, 13);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("SPECIALIZATION");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_1.setBounds(36, 101, 137, 13);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("QUALIFICATION");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_2.setBounds(41, 154, 122, 13);
+		contentPane.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("E-MAIL");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_3.setBounds(39, 292, 45, -47);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("ROOM\r\n");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_4.setBounds(63, 207, 72, 13);
+		contentPane.add(lblNewLabel_4);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(216, 254, 278, 27);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
+		
+		JLabel lblNewLabel_5 = new JLabel("E-MAIL");
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_5.setBounds(63, 260, 58, 13);
+		contentPane.add(lblNewLabel_5);
+		
+		Button button_2 = new Button("Delete");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String Name=textField.getText();
+				Connection con;
+				PreparedStatement pstm;
+				try
+				{
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					con=DriverManager.getConnection("jdbc:mysql://localhost:3306/doctor","root","manu@7641100");
+					pstm=con.prepareStatement("DELETE FROM doc WHERE name='" + Name + "'");
+					pstm.executeUpdate();
+					JOptionPane.showMessageDialog(contentPane,"Successfully deleted");
+				}catch(Exception e1) {}
+			
+			
+			}
+		});
+		button_2.setBackground(new Color(0, 255, 204));
+		button_2.setBounds(216, 388, 278, 33);
+		contentPane.add(button_2);
+		
+		Button button_3 = new Button("Exit");
+		button_3.setBackground(new Color(0, 255, 204));
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AdminPanel.main(new String[] {});
+			}
+		});
+		button_3.setBounds(216, 450, 278, 33);
+		contentPane.add(button_3);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(216, 308, 278, 27);
+		contentPane.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JLabel lblNewLabel_6 = new JLabel("Password");
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblNewLabel_6.setBounds(55, 314, 80, 13);
+		contentPane.add(lblNewLabel_6);
+	}
+}
