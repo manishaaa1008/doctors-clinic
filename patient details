@@ -1,0 +1,122 @@
+package org.Study;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Label;
+import java.awt.Font;
+import java.awt.Button;
+import javax.swing.JList;
+import java.awt.Panel;
+import java.awt.TextField;
+import javax.swing.JComboBox;
+import javax.swing.JTextPane;
+import java.awt.TextArea;
+import java.awt.Color;
+
+
+//For updating Patient detalis
+
+public class Patient extends JFrame {
+
+	private JPanel contentPane;
+
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Patient frame = new Patient();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	
+	public Patient() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1135, 523);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 128, 128));
+		contentPane.setForeground(new Color(0, 0, 0));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		Label label = new Label("                                              Enter details to update patient info");
+		label.setFont(new Font("Dialog", Font.BOLD, 21));
+		label.setBounds(10, 0, 1111, 50);
+		contentPane.add(label);
+		
+		Button button = new Button("Patient ID");
+		button.setBounds(173, 93, 97, 21);
+		contentPane.add(button);
+		
+		JList list = new JList();
+		list.setBounds(192, 93, 1, 1);
+		contentPane.add(list);
+		
+		Button button_1 = new Button("First Name");
+		button_1.setBounds(173, 191, 97, 21);
+		contentPane.add(button_1);
+		
+		Button button_2 = new Button("Last name");
+		button_2.setBounds(173, 237, 97, 21);
+		contentPane.add(button_2);
+		
+		Button button_3 = new Button("Age");
+		button_3.setBounds(173, 282, 97, 26);
+		contentPane.add(button_3);
+		
+		Button button_4 = new Button("Address");
+		button_4.setBounds(173, 367, 97, 21);
+		contentPane.add(button_4);
+		
+		Button button_5 = new Button("Gender");
+		button_5.setBounds(173, 326, 97, 21);
+		contentPane.add(button_5);
+		
+		TextField textField = new TextField();
+		textField.setBounds(387, 191, 296, 32);
+		contentPane.add(textField);
+		
+		TextField textField_1 = new TextField();
+		textField_1.setBounds(387, 237, 296, 32);
+		contentPane.add(textField_1);
+		
+		TextField textField_2 = new TextField();
+		textField_2.setBounds(387, 282, 296, 32);
+		contentPane.add(textField_2);
+		
+		TextField textField_4 = new TextField();
+		textField_4.setBounds(309, 93, 165, 43);
+		contentPane.add(textField_4);
+		
+		TextField textField_5 = new TextField();
+		textField_5.setBounds(387, 367, 296, 32);
+		contentPane.add(textField_5);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(387, 326, 296, 35);
+		contentPane.add(comboBox);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setBounds(906, 193, -76, 30);
+		contentPane.add(textPane);
+		
+		Button button_6 = new Button("Show Details");
+		button_6.setFont(new Font("Dialog", Font.BOLD, 12));
+		button_6.setBounds(108, 421, 132, 43);
+		contentPane.add(button_6);
+		
+		Button button_7 = new Button("Update");
+		button_7.setBounds(747, 432, 107, 32);
+		contentPane.add(button_7);
+	}
+}
